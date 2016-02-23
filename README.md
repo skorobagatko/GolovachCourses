@@ -1,6 +1,6 @@
 # GolovachCourses
 
-This repository keeps my labs and other stuff for course Java Core.
+This repository keeps my labs and other stuff for course <b>Java Core</b>.
 
 This course includes 6 modules:
 - <b>Procedural</b> (loops, local variables, method invoking, recursion, references, memory model in Java (Stack, Heap, PermGen, Garbage Collector etc.))
