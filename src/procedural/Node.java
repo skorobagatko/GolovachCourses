@@ -1,7 +1,7 @@
 package procedural;
 
-/**
- * Created by Stanislav on 01.02.2016.
+/*
+ * Реализация односвязного списка и методов для работы с ним.
  */
 public class Node {
     int value;
@@ -19,15 +19,15 @@ public class Node {
     public static void main(String[] args) {
         Node node = createIter(10);
         System.out.println(node);
-        System.out.println(sizeIter(node));
-
         Node node2 = createRec(5);
         System.out.println("toString - " + node2);
         System.out.println("SizeIter - " + sizeIter(node2));
         System.out.println("SizeRec - " + sizeRec(node2));
         System.out.println("SumIter - " + sumIter(node2));
         System.out.println("SumRec - " + sumRec(node2));
-        node2.add(new Node(45, null), 5);
+        node2.add(new Node(5, null), 2);
+        node2.add(new Node(15, null), 2);
+        node2.add(new Node(3, null), 7);
         System.out.println("Add - " + node2);
         System.out.println("MaxIter - " + maxIter(node2));
         remove(node2);
@@ -42,12 +42,12 @@ public class Node {
         return result;
     }
     // Создаем список рекурсивно
-    public static Node createRec( int size ) {
+    public static Node createRec(int size) {
         if (size >= 0) return new Node(0, createRec(size - 1));;
         return null;
     }
     // Удаляем последний элемент из списка
-    public static void remove( Node node ) {
+    public static void remove(Node node) {
         Node copy = node;
         int size = sizeIter(copy);
         for ( int i = 0; i < size-1; i++) {
@@ -104,9 +104,12 @@ public class Node {
     }
     // Ищем максимальный элемент в списке (итеративно)
     public static int maxIter(Node node) {
-        int result = 0;
+        int result = node.value;
+        node = node.next;
         while (node != null) {
-            if (node.value > result) { result = node.value; }  // Почему-то выводит не правильное значение
+            if (node.value > result) {
+                result = node.value;
+            }
             node = node.next;
         }
         return result;

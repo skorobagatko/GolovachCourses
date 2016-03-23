@@ -1,6 +1,6 @@
 package procedural;
 
-/**
+/*
      На месте каждого комментария в секции if (true)
     - оставить комментарий
     - поставить throw new NullPointerException();

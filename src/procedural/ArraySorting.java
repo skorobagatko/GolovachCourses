@@ -2,8 +2,8 @@ package procedural;
 
 import java.util.Arrays;
 
-/**
- * Created by Stanislav on 30.01.2016.
+/*
+ * Алгоритмы сортировки массивов
  */
 public class ArraySorting {
     public static void main(String[] args) {
