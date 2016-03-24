@@ -25,10 +25,10 @@ public class Node {
         System.out.println("SizeRec - " + sizeRec(node2));
         System.out.println("SumIter - " + sumIter(node2));
         System.out.println("SumRec - " + sumRec(node2));
-        node2.add(new Node(5, null), 2);
-        node2.add(new Node(15, null), 2);
-        node2.add(new Node(3, null), 7);
-        System.out.println("Add - " + node2);
+        node2 = add(node2, 2, 10);
+        System.out.println("Add to Index - " + node2);
+//        node2.add(new Node(15, null), 2);
+//        node2.add(new Node(3, null), 1);
         System.out.println("MaxIter - " + maxIter(node2));
         remove(node2);
         System.out.println("Remove - " + node2);
@@ -56,17 +56,12 @@ public class Node {
         copy.next = null;
     }
     // Добавляем элемент в список в указанную позицию
-    public void add(Node node, int index) {
-        Node origin = this;
-        if (index == 0) {
-            node.next = this.next;  // разобраться как вставлять элемент в начало списка
-        } else {
-            for (int i = 0; i < index - 1; i++) {
-                origin = origin.next;
-            }
-            node.next = origin.next;
-            origin.next = node;
-        }
+    public static Node add(Node tail, int index, int elem) {
+        if (index == 0) return new Node(elem, tail);
+        Node copy = tail;
+        for (; index-1 > 0; index--) copy = copy.next;
+        copy.next = new Node(elem, copy.next);
+        return tail;
     }
     // Узнаем размер списка итеративно
     public static int sizeIter(Node node) {
