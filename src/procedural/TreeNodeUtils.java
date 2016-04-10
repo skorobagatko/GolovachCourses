@@ -12,6 +12,8 @@ public class TreeNodeUtils {
         root.right.right.right = new TreeNode(2, null, new TreeNode(4, null, null));
         System.out.println("TreeNode height = " + height(root));
         System.out.println("TreeNode size = " + size(root));
+        System.out.println("TreeNode sum = " + sum(root));
+        System.out.println("TreeNode max = " + max(root));
     }
 
     // Метод создает бинарное дерево заданной высоты
@@ -34,6 +36,21 @@ public class TreeNodeUtils {
         int leftBranch;
         int rightBranch;
         return ((leftBranch = height(root.left)) > (rightBranch = height(root.right))) ? result + leftBranch : result + rightBranch ;
+    }
+
+    // Метод возвращает сумму всех значений value всех вершин дерева
+    public static int sum(TreeNode root) {
+        if (root == null) return 0;
+        return root.value + sum(root.left) + sum(root.right);
+    }
+
+    // Метод возвращает максимальное значение value среди всех вершин
+    // TODO
+    public static int max(TreeNode root) {
+        if (root == null) return 0;
+        int result;
+
+        return 1;
     }
 
     public static String toString(TreeNode root) {

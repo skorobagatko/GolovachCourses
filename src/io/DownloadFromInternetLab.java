@@ -33,8 +33,8 @@ public class DownloadFromInternetLab {
             outputStream1.flush();
             outputStream2.flush();
         } catch (IOException e) {
-            tmp1.delete();
-            tmp2.delete();
+            if (tmp1.exists()) tmp1.delete();
+            if (tmp2.exists()) tmp2.delete();
         } finally {
             if (inputStream != null) {
                 try {

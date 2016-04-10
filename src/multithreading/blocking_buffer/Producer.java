@@ -1,4 +1,6 @@
-package multithreading;
+package multithreading.blocking_buffer;
+
+import java.util.concurrent.TimeoutException;
 
 public class Producer implements Runnable {
     private int startValue;
@@ -14,12 +16,14 @@ public class Producer implements Runnable {
     @Override
     public void run() {
         while (true) {
-            System.out.println("Produce " + startValue);
+            System.out.println("Produced " + startValue);
             try {
-                buffer.put(startValue++);
+                buffer.put(startValue++, 100L);
                 Thread.sleep(sleepTime); // Метод sleep эмулирует работу, просто занимает время
             } catch (InterruptedException e) {
                 e.printStackTrace();
+            } catch (TimeoutException e) {
+                System.out.println("Time is out");
             }
         }
     }

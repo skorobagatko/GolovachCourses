@@ -1,4 +1,6 @@
-package procedural;
+package exceptions;
+
+import java.io.FileInputStream;
 
 /*
  На месте каждого комментария в секции if (true)
@@ -36,3 +38,8 @@ public class ExceptionLab2 {
         System.out.println(11);
     }
 }
+
+/*
+    TRY -> /* -> FINALLY -> /* -> OK    (0,1,2,9,10,11)
+    TRY -> /* -> FINALLY -> EX          (0,1,2,9)
+ */

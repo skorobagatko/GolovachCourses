@@ -1,4 +1,4 @@
-package procedural;
+package exceptions;
 
 /*
      На месте каждого комментария в секции if (true)
