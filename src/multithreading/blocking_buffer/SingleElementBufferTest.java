@@ -1,4 +1,4 @@
-package multithreading;
+package multithreading.blocking_buffer;
 
 public class SingleElementBufferTest {
     public static void main(String[] args) {
