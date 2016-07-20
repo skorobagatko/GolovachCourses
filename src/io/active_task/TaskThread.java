@@ -15,8 +15,30 @@ public class TaskThread extends Thread {
     @Override
     public void run() {
         while (task != null) {
-            task.next();
-
+            try {
+                Thread.sleep(task.sleepTime());
+            } catch (InterruptedException e) {
+                if (pause) {
+                    while (pause) {
+                    }
+                } else {
+                    return;
+                }
+            }
+            task = task.next();
         }
+    }
+
+    public void pauseStart() {
+        pause = true;
+        this.interrupt();
+    }
+
+    public void pauseStop() {
+        pause = false;
+    }
+
+    public Task getTask() {
+        return task;
     }
 }

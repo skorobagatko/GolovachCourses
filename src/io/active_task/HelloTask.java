@@ -1,5 +1,8 @@
 package io.active_task;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public class HelloTask implements Task, Serializable {
@@ -33,5 +36,25 @@ public class HelloTask implements Task, Serializable {
     @Override
     public long sleepTime() {
         return sleepTime;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public int getCounter() {
+        return counter;
+    }
+
+    private void writeObject(ObjectOutputStream out) throws IOException {
+        out.writeUTF(msg);
+        out.writeInt(counter);
+        out.writeLong(sleepTime);
+    }
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        this.msg = in.readUTF();
+        this.counter = in.readInt();
+        this.sleepTime = in.readLong();
     }
 }
