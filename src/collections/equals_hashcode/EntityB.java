@@ -25,25 +25,9 @@ public class EntityB {
 
     @Override
     public int hashCode() {
-        int prime = 17;
         int result = 1;
-        if (stringArr == null) { result = prime * result; }
-        else {
-            for (int i = 0; i < stringArr.length; i++) {
-                for (int j = 0; j < stringArr[i].length; j++) {
-                    String currentString = stringArr[i][j];
-                    result = prime * result + ((currentString != null) ? currentString.hashCode() : 0);
-                }
-            }
-        }
-        if (doubleArr == null) { result = prime * result; }
-        else {
-            for (double d : doubleArr) {
-                long l = Double.doubleToLongBits(d);
-                int current = (int) (l - (l >>> 32));
-                result = prime * result + current;
-            }
-        }
+        result = 31 * result + ((stringArr == null) ? 0 : Arrays.deepHashCode(stringArr));
+        result = 31 * result + ((doubleArr == null) ? 0 : Arrays.hashCode(doubleArr));
         return result;
     }
 
@@ -52,20 +36,13 @@ public class EntityB {
         if (obj == null) return false;
         if (obj.getClass() != this.getClass()) return false;
         EntityB that = (EntityB) obj;
-        if (this.hashCode() == that.hashCode()) return true;
-        return (Arrays.equals(this.stringArr, that.stringArr) && Arrays.equals(this.doubleArr, that.doubleArr));
+        return (Arrays.deepEquals(this.stringArr, that.stringArr)
+                && Arrays.equals(this.doubleArr, that.doubleArr));
     }
 
     @Override
     public String toString() {
-        return new String("EntityB : \n" + Arrays.deepToString(this.stringArr) +
-                                    "\n" + Arrays.toString(doubleArr));
-    }
-
-    public static void main(String[] args) {
-        String[][] stringArr = {{"Mike", "John"}, {"Sara", "Pit", "Phil"}, {"Andrew"}};
-        double[] doubleArr = {0.12, 1.34, 3,48};
-        EntityB entity = new EntityB(stringArr, doubleArr);
-        System.out.println(entity);
+        return "EntityB : \n" + Arrays.deepToString(this.stringArr) +
+                "\n" + Arrays.toString(doubleArr);
     }
 }

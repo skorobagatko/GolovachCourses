@@ -41,11 +41,10 @@ public class EntityA {
 
     @Override
     public int hashCode() {
-        int prime = 37;
         int result = 1;
-        result = prime * result + age;
-        result = prime * result + height;
-        result = prime * result + ((name != null) ? name.hashCode() : 0);
+        result = 31 * result + age;
+        result = 31 * result + height;
+        result = 31 * result + ((name != null) ? name.hashCode() : 0);
         return result;
     }
 
@@ -54,13 +53,14 @@ public class EntityA {
         if (obj == null) return false;
         if (obj.getClass() != this.getClass()) return false;
         EntityA that = (EntityA) obj;
-        if (this.hashCode() == that.hashCode()) return true;
-
-        return ((this.age == that.age) && (this.height == that.height) && (this.name.equals(that.name)));
+        if (this.age != that.age) return false;
+        if (this.height != that.height) return false;
+        return (this.name == null) ? that.name == null : this.name.equals(that.name);
     }
 
     @Override
     public String toString() {
-        return new String("EntityA [age = " + age + ", height = " + height + ", name = '" + name + "'");
+        return "EntityA {age = " + age + ", height = "
+                + height + ", name = '" + name + "'}";
     }
 }

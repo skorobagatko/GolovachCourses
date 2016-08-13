@@ -34,12 +34,16 @@ public class EntityC {
 
     @Override
     public int hashCode() {
-
-        return 0;
+        int result = 1;
+        result = 31 * result + entity.hashCode();
+        result = 31 * result + list.hashCode();
+        // TODO
+        return result;
     }
 
     @Override
     public boolean equals(Object obj) {
+        // todo: writes equals()
         throw new UnsupportedOperationException();
     }
 
